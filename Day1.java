@@ -27,15 +27,7 @@ class Day1 {
         while(sc.hasNextInt()) { 
             lst.add(sc.nextInt());
         }
-
-       // int count = 0;
-
-       // for (int i = 1; i < lst.size(); i++) { 
-       //     if (lst.get(i) > lst.get(i - 1)) { 
-       //         count++;
-       //     } 
-       // }
-       
+ 
        System.out.println(partTwo(lst));
 
     }

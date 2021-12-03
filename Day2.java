@@ -9,8 +9,6 @@ class Day2 {
 
         for (String e: input) { 
             int units = Integer.parseInt(e.substring(e.length()-1));
-            //System.out.println(e);
-            //System.out.printf("String: %s, Units: %d%n", e, units);
 
             if (e.startsWith("forward")) { 
                 pos += units;

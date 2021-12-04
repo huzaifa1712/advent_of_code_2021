@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Arrays;
 import java.util.Map;
 
+// use hash table to update marked and check for win in O(1) time (if no duplicates) 
 class Board { 
     private final HashMap<Integer, Pair<ArrayList<Integer>, Boolean>> map; // ArrayList<Integer> of indices w that num, in case duplicates
     private final int[] marked; // 0 to 4: rows, 5 to 9: cols. first to n 
@@ -56,7 +57,7 @@ class Board {
     // calculate row and col for each index in indices, update appropriate index in marked 
     // unless: if updated sum == n, won = true and score = num * sum of unmarked
     Board mark(int num) { 
-        if (!map.containsKey(num)) return this;
+        if (this.won || !map.containsKey(num)) return this;
         
         Pair<ArrayList<Integer>, Boolean> p = map.get(num);
 

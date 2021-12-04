@@ -9,7 +9,18 @@ class Day4 {
     private static int N_BIG = 100;
     private static int BOARD_SIZE = 5;
 
-    static int partOne(List<Integer> input, ArrayList<Board> boards) {   
+    static int partOne(List<Integer> input, ArrayList<Board> boards) {  
+       // for (int i: input) { 
+       //     System.out.printf("%d ", i);
+       // }
+
+       // System.out.println();
+
+       // for (Board board: boards) { 
+       //     System.out.println(board);
+       //     System.out.println("");
+       // }
+       
        for (int i: input) { 
            Optional<Board> win = boards.stream()
                .filter(b -> b.hasWon())
@@ -28,25 +39,30 @@ class Day4 {
     }
 
 
-    static int partTwo(List<Integer> input, ArrayList<Board> boards) {   
-       Optional<Board> last = Optional.empty();
+    static int partTwo(List<Integer> input, ArrayList<Board> boards) {  
+       // for (int i: input) { 
+       //     System.out.printf("%d ", i);
+       // }
 
+       // System.out.println();
+
+       // for (Board board: boards) { 
+       //     System.out.println(board);
+       //     System.out.println("");
+       // }
+       
        for (int i: input) { 
            ArrayList<Board> win = boards.stream()
                .filter(b -> !b.hasWon())
                .collect(Collectors.toCollection(ArrayList::new));
 
            if (win.size() == 1) { 
-               last = Optional.of(win.get(0));
+               return win.get(0).getScore() ;
            }
 
            boards = boards.stream()
                .map(b -> b.mark(i))
                .collect(Collectors.toCollection(ArrayList::new));
-       }
-
-       if (last.isPresent()) { 
-           return last.get().getScore();
        }
 
         return 0;
@@ -58,6 +74,7 @@ class Day4 {
         List<Integer> input = new ArrayList<Integer>();
  
         for (int i = 0; i < N_BIG; i++) { 
+            //System.out.printf("%d ", i);
             input.add(sc.nextInt());
             
         }
@@ -78,7 +95,6 @@ class Day4 {
         }
 
         System.out.println(partOne(input, boards));
-        System.out.println(partTwo(input, boards));
 
     }
 }
